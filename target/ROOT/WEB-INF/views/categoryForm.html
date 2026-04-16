@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>카테고리 등록</title>
+    <style>
+        body { font-family: 'Malgun Gothic', Arial, sans-serif; max-width: 500px; margin: 40px auto; padding: 0 20px; color: #333; }
+        h1 { color: #2c3e50; }
+        .form-group { margin: 16px 0; }
+        label { display: block; margin-bottom: 6px; font-weight: bold; }
+        input[type=text] { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .error { color: red; font-size: 0.9em; margin-top: 4px; }
+        .btn { display: inline-block; padding: 10px 24px; background: #4a90d9; color: white; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; }
+        .btn:hover { background: #357abd; }
+        .btn-gray { background: #6c757d; }
+        footer { margin-top: 40px; padding: 12px 16px; border-top: 1px solid #ccc; font-size: 0.85em; color: #555; background-color: #f9f9f9; }
+    </style>
+</head>
+<body>
+
+<h1>카테고리 등록</h1>
+
+<form th:action="@{/categories/create}" th:object="${categoryForm}" method="post">
+    <div class="form-group">
+        <label for="name">카테고리 이름</label>
+        <input type="text" th:field="*{name}" placeholder="카테고리 이름 입력"/>
+        <div class="error" th:errors="*{name}"></div>
+    </div>
+    <button type="submit" class="btn">등록</button>
+    <a class="btn btn-gray" th:href="@{/categories}">취소</a>
+</form>
+
+<footer>
+    <p th:text="${'실습 수행 일시: ' + #temporals.format(#temporals.createNow(), 'yyyy년 MM월 dd일 HH:mm:ss') + '  │  학번: 2271510  │  성명: 박계령'}"></p>
+</footer>
+
+</body>
+</html>
